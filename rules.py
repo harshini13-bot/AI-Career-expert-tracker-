@@ -1,52 +1,50 @@
-rules = [
+career_profiles = {
 
-    {
-        "conditions": ["programming", "maths"],
-        "conclusion": "ai_ml"
+    "Machine Learning Engineer": {
+        "skills": ["programming", "python", "maths"],
+        "salary": "8-20 LPA",
+        "description": "Builds AI and Machine Learning models."
     },
 
-    {
-        "conditions": ["ai_ml", "python"],
-        "conclusion": "machine_learning_engineer"
+    "Data Scientist": {
+        "skills": ["python", "statistics", "data_analysis"],
+        "salary": "7-18 LPA",
+        "description": "Analyzes data to find insights."
     },
 
-    {
-        "conditions": ["programming", "web_development"],
-        "conclusion": "full_stack_developer"
+    "Full Stack Developer": {
+        "skills": ["programming", "web_development"],
+        "salary": "5-15 LPA",
+        "description": "Develops frontend and backend applications."
     },
 
-    {
-        "conditions": ["design", "creativity"],
-        "conclusion": "ui_ux_designer"
+    "Cyber Security Analyst": {
+        "skills": ["cybersecurity", "networking"],
+        "salary": "6-15 LPA",
+        "description": "Protects systems from cyber attacks."
     },
 
-    {
-        "conditions": ["data_analysis", "statistics"],
-        "conclusion": "data_scientist"
+    "Penetration Tester": {
+        "skills": ["cybersecurity", "ethical_hacking"],
+        "salary": "8-18 LPA",
+        "description": "Tests security vulnerabilities."
     },
 
-    {
-        "conditions": ["data_scientist", "python"],
-        "conclusion": "senior_data_scientist"
+    "Cloud Engineer": {
+        "skills": ["cloud", "networking"],
+        "salary": "7-16 LPA",
+        "description": "Manages cloud infrastructure."
     },
 
-    {
-        "conditions": ["cybersecurity", "networking"],
-        "conclusion": "security_analyst"
+    "DevOps Engineer": {
+        "skills": ["cloud", "linux", "networking"],
+        "salary": "8-20 LPA",
+        "description": "Automates deployment pipelines."
     },
 
-    {
-        "conditions": ["security_analyst", "ethical_hacking"],
-        "conclusion": "penetration_tester"
-    },
-
-    {
-        "conditions": ["cloud", "networking"],
-        "conclusion": "cloud_engineer"
-    },
-
-    {
-        "conditions": ["cloud_engineer", "linux"],
-        "conclusion": "devops_engineer"
+    "UI/UX Designer": {
+        "skills": ["design", "creativity"],
+        "salary": "4-12 LPA",
+        "description": "Designs user-friendly interfaces."
     }
-]
+}

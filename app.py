@@ -1,5 +1,5 @@
 import streamlit as st
-from inference import forward_chaining
+from inference import recommend_careers
 
 st.set_page_config(
     page_title="AI Career Guidance Expert System",
@@ -8,15 +8,29 @@ st.set_page_config(
 
 st.title("🎓 AI Career Guidance Expert System")
 
+st.markdown("""
+### Features
+
+✅ AI-Based Career Recommendation
+
+✅ Skill Matching
+
+✅ Rule-Based Inference
+
+✅ Career Insights
+
+✅ Salary Information
+""")
+
 st.write(
-    "Select your interests and skills."
+    "Select your skills and interests to discover suitable career paths."
 )
 
 options = [
 
     "programming",
-    "maths",
     "python",
+    "maths",
     "web_development",
     "design",
     "creativity",
@@ -37,36 +51,37 @@ selected = st.multiselect(
 
 if st.button("Get Career Recommendation"):
 
-    results, steps = forward_chaining(selected)
+    recommendations, reasoning = recommend_careers(
+        selected
+    )
 
     st.subheader("Reasoning Path")
 
-    if steps:
+    for step in reasoning:
+        st.info(step)
 
-        for step in steps:
-            st.info(step)
-
-    else:
-        st.warning(
-            "No rule fired."
-        )
-
-    st.subheader("Recommended Careers")
-
-    recommendations = []
-
-    for item in results:
-
-        if item not in selected:
-
-            recommendations.append(item)
+    st.subheader("Top Career Recommendations")
 
     if recommendations:
 
-        for r in recommendations:
-            st.success(r.replace("_", " ").title())
+        for career in recommendations[:5]:
+
+            st.success(
+                f"{career['career']} ({career['score']}% Match)"
+            )
+
+            st.write(
+                f"Description: {career['description']}"
+            )
+
+            st.write(
+                f"Average Salary: {career['salary']}"
+            )
+
+            st.divider()
 
     else:
-        st.error(
-            "No recommendation found."
+
+        st.warning(
+            "Please select more skills."
         )

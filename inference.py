@@ -1,33 +1,40 @@
-from rules import rules
+from rules import career_profiles
 
-def forward_chaining(facts):
+def recommend_careers(user_skills):
 
-    inferred = set(facts)
+    recommendations = []
 
     reasoning_steps = []
 
-    changed = True
+    for career, details in career_profiles.items():
 
-    while changed:
+        required_skills = details["skills"]
 
-        changed = False
+        matched = len(
+            set(user_skills) &
+            set(required_skills)
+        )
 
-        for rule in rules:
+        score = round(
+            (matched / len(required_skills)) * 100
+        )
 
-            conditions = set(rule["conditions"])
+        if score > 0:
 
-            conclusion = rule["conclusion"]
+            reasoning_steps.append(
+                f"{career}: matched {matched} out of {len(required_skills)} skills"
+            )
 
-            if conditions.issubset(inferred):
+            recommendations.append({
+                "career": career,
+                "score": score,
+                "salary": details["salary"],
+                "description": details["description"]
+            })
 
-                if conclusion not in inferred:
+    recommendations.sort(
+        key=lambda x: x["score"],
+        reverse=True
+    )
 
-                    inferred.add(conclusion)
-
-                    reasoning_steps.append(
-                        f"IF {', '.join(rule['conditions'])} THEN {conclusion}"
-                    )
-
-                    changed = True
-
-    return inferred, reasoning_steps
+    return recommendations, reasoning_steps

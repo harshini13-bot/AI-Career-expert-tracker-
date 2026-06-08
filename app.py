@@ -8,19 +8,6 @@ st.set_page_config(
 
 st.title("🎓 AI Career Guidance Expert System")
 
-st.markdown("""
-### Features
-
-✅ AI-Based Career Recommendation
-
-✅ Skill Matching
-
-✅ Rule-Based Inference
-
-✅ Career Insights
-
-✅ Salary Information
-""")
 
 st.write(
     "Select your skills and interests to discover suitable career paths."
